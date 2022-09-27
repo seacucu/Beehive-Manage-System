@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeehiveManageSystem"
         mc:Ignorable="d"
-        Title="蜂巢模擬遊戲" Height="325" Width="625">
+        Title="蜂巢模擬遊戲" Height="325" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -22,18 +22,18 @@
         <TextBox x:Name="Report" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="20" 
                  IsReadOnly="True"/>
         <StackPanel Grid.Row="1" Margin="20">
-            <ComboBox x:Name="jobSelector" FontSize="16" Margin="0,0,0,20" SelectedIndex="0">
+            <ComboBox x:Name="jobSelector" FontSize="14" Margin="0,0,0,20" SelectedIndex="0">
                 <ListBoxItem Content="採蜜" />
                 <ListBoxItem Content="製蜜" />
                 <ListBoxItem Content="顧卵" />
             </ComboBox>
-            <Button x:Name="jobAssign" Content="指派此工作給一隻蜜蜂" FontSize="16" 
+            <Button x:Name="jobAssign" Content="指派此工作給一隻蜜蜂" FontSize="14" 
                     Click="JobAssign_Click" Height="30"/>
         </StackPanel>
 
         <Label Content="蜂巢報告" FontSize="18" Grid.Column="1"
                HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-        <Button x:Name="workShift" Content="進行下個班次" Margin="20" Grid.Row="2" FontSize="16" 
+        <Button x:Name="workShift" Content="進行下一天" Margin="20" Grid.Row="2" FontSize="16" 
                 Click="WorkShift_Click"/>
         
 

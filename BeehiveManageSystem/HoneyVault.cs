@@ -18,9 +18,9 @@ namespace BeehiveManageSystem
             get { 
                 string massage = $"花蜜量：{nectar:0.0}\n蜂蜜量：{honey:0.0}\n";
                 if (nectar < LOW_WARNING)
-                    massage += "警告，花蜜量低，請加派工蜂採蜜！\n";
+                    massage += "警告！花蜜量低，請加派工蜂採蜜！\n";
                 if (honey < LOW_WARNING)
-                    massage += "警告，蜂蜜量低，請加派工蜂製蜜！\n";
+                    massage += "警告！蜂蜜量低，請加派工蜂製蜜！\n";
                 return massage;
             }
         }

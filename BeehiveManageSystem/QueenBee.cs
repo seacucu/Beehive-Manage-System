@@ -36,9 +36,10 @@ namespace BeehiveManageSystem
             string collectorStatus = $"採蜜工蜂：{WorkerStatus("採蜜")}\n";
             string manufacturerStatus = $"製蜜工蜂：{WorkerStatus("製蜜")}\n";
             string eggCareStatus = $"顧卵工蜂：{WorkerStatus("顧卵")}\n";
+            string daysPassed = $"\n經過天數：{MainWindow.DaysPassed}";
 
             StatusReport = VaultReport + eggReport + unassignedReport +
-                collectorStatus + manufacturerStatus + eggCareStatus;
+                collectorStatus + manufacturerStatus + eggCareStatus + daysPassed;
         }
         private string WorkerStatus(string job)
         {
