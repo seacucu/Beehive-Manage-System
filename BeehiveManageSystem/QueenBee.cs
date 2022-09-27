@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using BeehiveManageSystem.Workers;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BeehiveManageSystem
 {
@@ -27,47 +28,23 @@ namespace BeehiveManageSystem
         }
 
         /*-------- 方法 --------*/
-
         private void UpdateStatusReport()
         {
             string VaultReport = $"－蜂蜜庫報告－\n{HoneyVault.StatusReport}\n";
             string eggReport = $"－蜂后報告－\n目前蜂卵：{eggs:0.0}顆\n";
             string unassignedReport = $"可指派工蜂：{Math.Floor(unassignedWorkers)}隻\n";
-            string collectorStatus = $"採蜜工蜂：{WorkerStatus("採蜜")}\n";
-            string manufacturerStatus = $"製蜜工蜂：{WorkerStatus("製蜜")}\n";
-            string eggCareStatus = $"顧卵工蜂：{WorkerStatus("顧卵")}\n";
+            string collectorStatus = $"採蜜工蜂：{WorkerStatus("採蜜")}隻\n";
+            string manufacturerStatus = $"製蜜工蜂：{WorkerStatus("製蜜")}隻\n";
+            string eggCareStatus = $"顧卵工蜂：{WorkerStatus("顧卵")}隻\n";
             string daysPassed = $"\n經過天數：{MainWindow.DaysPassed}";
 
             StatusReport = VaultReport + eggReport + unassignedReport +
                 collectorStatus + manufacturerStatus + eggCareStatus + daysPassed;
         }
-        private string WorkerStatus(string job)
+        private int WorkerStatus(string job)
         {
-            int collector = 0, manufacturer = 0, eggCare = 0;
-            foreach (Bee worker in workers)
-            {
-                switch (worker.Job)
-                {
-                    case "採蜜":
-                        collector++;    break;                        
-                    case "製蜜":
-                        manufacturer++; break;                        
-                    case "顧卵":
-                        eggCare++;      break;                        
-                    default:            break;                        
-                }
-            }
-            switch (job)
-            {
-                case "採蜜":
-                    return $"{collector}隻";
-                case "製蜜":
-                    return $"{manufacturer}隻";
-                case "顧卵":
-                    return $"{eggCare}隻";
-                default:
-                    return "發生錯誤。";
-            }
+            int countWorker = workers.Count(worker => worker.Job == job);
+            return countWorker;
         }
 
         public void CareForEggs(float eggsToConvert)
@@ -79,17 +56,19 @@ namespace BeehiveManageSystem
             }
         }
 
+        /// <summary>
+        /// 根據 job 參數 new 新的工蜂實例傳入 AddWorker()，
+        /// 然後呼叫 UpdateStatusReport()。
+        /// </summary>
+        /// <param name="job">要新增的工蜂種類。</param>
         public void AssignBee(string job)
         {
             switch (job)
             {
-                case "採蜜":
-                    AddWorker(new Collector());break;
-                case "製蜜":
-                    AddWorker(new Manufacturer());break;
-                case "顧卵":
-                    AddWorker(new EggCare(this));break;
-                default:break;
+                case "採蜜":  AddWorker(new Collector());     break;
+                case "製蜜":  AddWorker(new Manufacturer());  break;
+                case "顧卵":  AddWorker(new EggCare(this));   break;
+                default:    break;
             }
             UpdateStatusReport();
         }

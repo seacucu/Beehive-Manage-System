@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeehiveManageSystem"
         mc:Ignorable="d"
-        Title="蜂巢模擬遊戲" Height="325" Width="500">
+        Title="蜂巢模擬遊戲" Height="340" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -27,7 +27,7 @@
                 <ListBoxItem Content="製蜜" />
                 <ListBoxItem Content="顧卵" />
             </ComboBox>
-            <Button x:Name="jobAssign" Content="指派此工作給一隻蜜蜂" FontSize="14" 
+            <Button x:Name="jobAssign" Content="指派此工作" FontSize="14" 
                     Click="JobAssign_Click" Height="30"/>
         </StackPanel>
 
