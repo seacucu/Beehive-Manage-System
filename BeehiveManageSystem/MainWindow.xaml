@@ -1,0 +1,41 @@
+﻿<Window x:Class="BeehiveManageSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeehiveManageSystem"
+        mc:Ignorable="d"
+        Title="蜂巢模擬遊戲" Height="325" Width="625">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="工作分配" FontSize="18"
+               HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+        <TextBox x:Name="Report" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="20" 
+                 IsReadOnly="True"/>
+        <StackPanel Grid.Row="1" Margin="20">
+            <ComboBox x:Name="jobSelector" FontSize="16" Margin="0,0,0,20" SelectedIndex="0">
+                <ListBoxItem Content="採蜜" />
+                <ListBoxItem Content="製蜜" />
+                <ListBoxItem Content="顧卵" />
+            </ComboBox>
+            <Button x:Name="jobAssign" Content="指派此工作給一隻蜜蜂" FontSize="16" 
+                    Click="JobAssign_Click" Height="30"/>
+        </StackPanel>
+
+        <Label Content="蜂巢報告" FontSize="18" Grid.Column="1"
+               HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <Button x:Name="workShift" Content="進行下個班次" Margin="20" Grid.Row="2" FontSize="16" 
+                Click="WorkShift_Click"/>
+        
+
+    </Grid>
+</Window>
